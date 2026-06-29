@@ -9,8 +9,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Compiler le code C en EXE
+        shell: bash
         run: |
-          gcc back_noise.c beeprob.c dsp.c Enhance.c EvalQual.c hosm.c inter_detect.c lpc.c LpcAnalysis.c main.c mapping.c module1.c module2.c module3.c n_dist.c p563.c perceptive.c pre_proc.c pt_filt.c signals.c statistics.c vtp.c -o p563.exe -lm -Wno-implicit-int
+          # Cette commande cherche tous les fichiers .c récursivement et les compile d'un coup
+          gcc $(find . -name "*.c") -o p563.exe -lm -Wno-implicit-int
 
       - name: Sauvegarder l'exécutable
         uses: actions/upload-artifact@v4
