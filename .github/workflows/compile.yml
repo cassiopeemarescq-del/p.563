@@ -1,0 +1,19 @@
+name: Compilation Windows
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Compiler le code C en EXE
+        run: |
+          gcc *.c -o p563.exe -lm -Wno-implicit-int
+
+      - name: Sauvegarder l'exécutable
+        uses: actions/upload-artifact@v4
+        with:
+          name: mon_executable_p563
+          path: p563.exe
