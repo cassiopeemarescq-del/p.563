@@ -1,4 +1,4 @@
-name: Compilation Windows
+name: Compilation Windows V2
 on: [workflow_dispatch]
 
 jobs:
@@ -9,6 +9,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Compiler le code C en EXE
+        shell: bash
         run: |
           gcc *.c -o p563.exe -lm -Wno-implicit-int
 
